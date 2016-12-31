@@ -1,0 +1,4 @@
+#!/bin/bash
+cd ~/vimfiles
+git pull
+vim +PluginInstall! +qall

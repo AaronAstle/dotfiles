@@ -1,0 +1,7 @@
+*.swo
+*.swp
+
+.netrwhist
+doc/tags
+.vimlog
+bundle/*
