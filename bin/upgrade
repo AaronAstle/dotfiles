@@ -1,4 +1,4 @@
 #!/bin/bash
-cd ~/.vim
+cd ~/vimfiles
 rm -rf bundle
 bin/install
