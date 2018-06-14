@@ -1,4 +1,4 @@
 #!/bin/bash
 cd ~/vimfiles
-[[ -h "$HOME/vimfiles/vimrc" ]] || ln -s ~/vimfiles/vimrc ~/_vimrc
+[[ -h "$HOME/vimfiles/vimrc" ]] || ln -s ~/vimfiles/vimrc ~/.vimrc
 vim +qall
