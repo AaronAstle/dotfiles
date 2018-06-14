@@ -74,7 +74,9 @@ filetype plugin indent on
 syntax enable
 syntax on
 
-runtime! ..\..\vimfiles\init\**.vim
+"runtime! ..\..\vimfiles\init\**.vim
 
-
+for f in split(glob('~/vimfiles/init/*.vim'), '\n')
+  exe 'source' f
+endfor
 
