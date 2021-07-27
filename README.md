@@ -3,7 +3,7 @@ Using Pivotalcommons vim repo to build and customize my Windows environment.
 # To Install
 (Re)move ~/.vim, ~/vimfiles, ~/_vimrc and ~/vimrc if you have them already, and run:
 
-    git clone https://github.com/AaronAstle/vim-config.git ~/vimfiles
+    git clone https://github.com/AaronAstle/dotfiles.git ~/vimfiles
     ~/vimfiles/bin/install
 
 # Updating
