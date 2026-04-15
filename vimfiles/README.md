@@ -1,22 +1,23 @@
 Using Pivotalcommons vim repo to build and customize my Windows environment.
 
 # To Install
-(Re)move ~/.vim, ~/vimfiles, ~/_vimrc and ~/vimrc if you have them already, and run:
+(Re)move ~/.vim, ~/dotfiles, ~/vimfiles, ~/_vimrc and ~/vimrc if you have them already, and run:
 
-    git clone https://github.com/AaronAstle/dotfiles.git ~/vimfiles
-    ~/vimfiles/bin/install
+    git clone https://github.com/AaronAstle/dotfiles.git ~/dotfiles
+    ln -s ~/dotfiles/vimfiles ~/vimfiles
+    ~/dotfiles/vimfiles/bin/install
 
 # Updating
 Fetch the latest version of vim-config and install all the new bundles by running:
 
-    ~/vimfiles/bin/update
+    ~/dotfiles/vimfiles/bin/update
 
 # Upgrading from an old vim-config
 
 If you're upgrading from a previous version that uses Pathogen instead of
 Vundle, you may need to do some one-time cleanup:
 
-    ~/vimfiles/bin/upgrade
+    ~/dotfiles/vimfiles/bin/upgrade
 
 # Functionality
 
@@ -133,4 +134,3 @@ To install the necessary bundles:
 To upgrade bundles to their latest version, use the bang version:
 
     vim +PluginInstall! +qall # or run :PluginInstall! within Vim
-

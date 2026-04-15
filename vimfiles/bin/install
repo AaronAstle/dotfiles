@@ -1,0 +1,12 @@
+#!/bin/bash
+cd ~/vimfiles
+[[ -h "$HOME/vimfiles/vimrc" ]] || ln -s ~/vimfiles/vimrc ~/_vimrc
+vim +qall
+
+VIMFILES_ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
+DOTFILES_ROOT="$(cd -- "$VIMFILES_ROOT/.." && pwd)"
+COPILOT_SYNC_SCRIPT="$DOTFILES_ROOT/copilot/bin/sync-to-copilot-home"
+
+if [[ -f "$COPILOT_SYNC_SCRIPT" ]]; then
+  DOTFILES_ROOT="$DOTFILES_ROOT" bash "$COPILOT_SYNC_SCRIPT" --prompt
+fi

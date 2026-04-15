@@ -6,9 +6,9 @@ set nocompatible
 filetype off
 
 set rtp+=~/vimfiles/bundle/Vundle.vim/
-call vundle#begin('~/vimfiles/bundle/')
+call vundle#begin('~/vimfiles/bundle')
 
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 " Colorschemes
 Plugin 'chriskempson/base16-vim'

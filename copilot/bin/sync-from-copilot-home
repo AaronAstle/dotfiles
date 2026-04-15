@@ -1,0 +1,48 @@
+#!/bin/bash
+set -euo pipefail
+
+SCRIPT_ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.." && pwd)"
+DOTFILES_ROOT="${DOTFILES_ROOT:-$SCRIPT_ROOT}"
+SOURCE_DIR="$HOME/.copilot"
+TARGET_DIR="$DOTFILES_ROOT/copilot"
+
+if [[ ! -d "$SOURCE_DIR" ]]; then
+  echo "Active Copilot directory not found: $SOURCE_DIR"
+  exit 1
+fi
+
+sync_files() {
+  mkdir -p "$TARGET_DIR"
+
+  if [[ -d "$SOURCE_DIR/skills" ]]; then
+    mkdir -p "$TARGET_DIR/skills"
+    cp -R "$SOURCE_DIR/skills/." "$TARGET_DIR/skills/"
+  fi
+
+  if [[ -d "$SOURCE_DIR/.github" ]]; then
+    mkdir -p "$TARGET_DIR/.github"
+    find "$SOURCE_DIR/.github" -type f -name '*.md' | while read -r file; do
+      if [[ "$file" == *[Mm][Cc][Pp]* ]]; then
+        relative="${file#"$SOURCE_DIR/"}"
+        mkdir -p "$TARGET_DIR/$(dirname "$relative")"
+        cp "$file" "$TARGET_DIR/$relative"
+      fi
+    done
+  fi
+
+  echo "Synced Copilot skills and MCP markdown into $TARGET_DIR"
+}
+
+if [[ "${1:-}" == "--prompt" ]]; then
+  read -r -p "Sync current ~/.copilot skills and MCP markdown into $TARGET_DIR? [y/N] " answer
+  case "$answer" in
+    [Yy]|[Yy][Ee][Ss])
+      sync_files
+      ;;
+    *)
+      echo "Skipped Copilot sync."
+      ;;
+  esac
+else
+  sync_files
+fi
